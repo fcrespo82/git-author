@@ -7,7 +7,7 @@ Easily set git commit author for your **personal**, **work** or any other profil
 ```shell
 git clone https://github.com/fcrespo82/git-set_author.git
 cd git-set_author
-./install
+./install.sh
 ```
 
 ## Usage
