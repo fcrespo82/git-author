@@ -2,7 +2,7 @@
 
 Easily set git commit author for your **personal**, **work** or any other profile requirements.
 
-## Instalation
+## Installation
 
 It will clone the repo and install a symbolic link in `$HOME/.local/bin`. If that folder does not exists it will create. Make sure this path is in your `PATH`.
 
