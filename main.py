@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-function-docstring
 
