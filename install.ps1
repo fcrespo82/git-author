@@ -4,7 +4,7 @@ if (-not (Test-Path $FolderName)) {
     Write-Host "Folder $FolderName successfully"
 }
 
-new-item -Force -type SymbolicLink -Target (resolve-path ./main.py) -Path $HOME/.local/bin/git-set_author
+new-item -Force -type SymbolicLink -Target (resolve-path ./main.py) -Path $HOME/.local/bin/git-author
 
 Write-Output ""
 Write-Warning "Please make sure there's a config.ini in this folder with your required profiles"
