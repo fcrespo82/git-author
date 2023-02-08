@@ -23,6 +23,7 @@ def setup_parser():
                        help='Set the git author to be one of the configured profiles')
     group.add_argument('-e', '--edit', action='store_true', required=False,
                        help='Open a text editor to configure the profiles')
+    group.add_argument('-l', '--list', action='store_true', help='List available config choices with params')
     return arg_parser
 
 
@@ -79,6 +80,11 @@ def edit_file():
 
     subprocess.run(editor.split(' ') + [CONFIG_PATH], check=True)
 
+def list_choices():
+    for section in config.sections():
+        mapped = '\n'.join(map(lambda x: f'{x}={config[section][x]}', config[section])).replace('=','\t')
+        print(f'''\n[{section}]
+{mapped}''')
 
 if __name__ == '__main__':
     if not is_git():
@@ -91,5 +97,7 @@ if __name__ == '__main__':
         exit(2)
     elif args.set:
         setup_git(args.set)
+    elif args.list:
+        list_choices()
     else:
         parser.print_help()
