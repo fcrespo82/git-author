@@ -1,2 +1,4 @@
 .venv
 config.ini
+*.egg-info
+__pycache__
