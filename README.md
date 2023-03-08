@@ -27,9 +27,9 @@ Commands:
 
 Every command has a help flag (-h/--help) to list its options.
 
-- `edit`: Edit profiles file or create one if it doesn't exists
-- `list`: List profiles, use `-v` to show its values
-- `set`: Sets a profile
+- `edit`: Edit profiles file or create one if it doesn't exists.
+- `list`: List profiles, use `-v` to show its values.
+- `set`: Sets a profile. MUST be in a git directory to work.
 
 ## Configuration
 
