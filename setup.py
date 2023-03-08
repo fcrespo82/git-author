@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="git-set-author",
+    name="git-author",
     version="1.0.0",
     author="Fernando Crespo",
     author_email="fernando82@gmail.com",
