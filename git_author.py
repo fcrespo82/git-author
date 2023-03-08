@@ -41,9 +41,12 @@ signingkey=7439487398473948""")
     if not os.path.exists(ctx.obj["path"]):
         text = click.edit("\n\n" + "\n".join(marker),
                           editor=editor, extension="ini")
-        text = text.split(marker[0], 1)[0].rstrip("\n")
-        with open(ctx.obj["path"], mode="w", encoding="utf8") as _file:
-            _file.write(text)
+        if text:
+            text = text.split(marker[0], 1)[0].rstrip("\n")
+            with open(ctx.obj["path"], mode="w", encoding="utf8") as _file:
+                _file.write(text)
+        else:
+            click.echo("File save canceled")
     else:
         click.edit(filename=ctx.obj["path"], editor=editor)
 
