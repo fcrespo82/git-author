@@ -8,7 +8,8 @@ setup(
     packages=[],
     entry_points="""
     [console_scripts]
-    gsa=git_set_author:cli
+    git-author=git_author:cli
     """,
-    install_requires=["click", "tabulate"]
+    install_requires=["click", "tabulate"],
+    include_package_data=True
 )
