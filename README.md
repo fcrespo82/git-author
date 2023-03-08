@@ -7,7 +7,7 @@ Easily set git commit author for your **personal**, **work** or any other profil
 Make sure python scripts path is in your `PATH`.
 
 ```shell
-pip install git+https://github.com/fcrespo82/git-set_author.git
+pip install git+https://github.com/fcrespo82/git-author.git
 ```
 
 ## Usage
@@ -45,8 +45,16 @@ This command will open an editor with a template and save it in a file named `gi
 - email
 - signingkey
 
+## Listing profiles
 
-## Usage
+```shell
+git author list [-v]
+```
+
+List profiles names, pass `-v` option to list its values.
+
+
+## Setting profile
 
 ```shell
 git author set [profile]
