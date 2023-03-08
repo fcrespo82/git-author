@@ -4,20 +4,52 @@ Easily set git commit author for your **personal**, **work** or any other profil
 
 ## Installation
 
-It will clone the repo and install a symbolic link in `$HOME/.local/bin`. If that folder does not exists it will create. Make sure this path is in your `PATH`.
+Make sure python scripts path is in your `PATH`.
 
 ```shell
-git clone https://github.com/fcrespo82/git-set_author.git
-cd git-set_author
-./install.sh
+pip install git+https://github.com/fcrespo82/git-set_author.git
 ```
+
+## Usage
+
+```
+Usage: git-author [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -h, --help     Show this message and exit.
+  --config PATH  The config file to use.  [default: ~\git-authors.conf]
+
+Commands:
+  edit
+  list
+  set
+```
+
+Every command has a help flag (-h/--help) to list its options.
+
+- `edit`: Edit profiles file or create one if it doesn't exists
+- `list`: List profiles, use `-v` to show its values
+- `set`: Sets a profile
 
 ## Configuration
 
-Create a file named `config.ini` in the format of `config.ini.template` with your desired profiles.
+```shell
+git author [--config file.ini] edit 
+```
+
+This command will open an editor with a template and save it in a file named `git-authors.conf` or the file you passed in the options.
+
+### Supported params
+
+- name
+- email
+- signingkey
+
 
 ## Usage
 
 ```shell
-git set_author [profile]
+git author set [profile]
 ```
+
+Upon setting a profile, if it has the `signingkey` value, it will automatically set `commit.gpgsign` to `true`

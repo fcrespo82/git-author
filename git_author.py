@@ -13,7 +13,7 @@ def is_git():
 
 @click.group()
 @click.help_option("-h", "--help")
-@click.option("--config", type=click.Path(), default=os.path.join(os.path.expanduser("~"), "git-set-author.ini"), help="The config file to use.", show_default=True)
+@click.option("--config", type=click.Path(), default=os.path.join(os.path.expanduser("~"), "git-authors.conf"), help="The config file to use.", show_default=True)
 @click.pass_context
 def cli(ctx, config):
     ctx.ensure_object(dict)
@@ -23,7 +23,7 @@ def cli(ctx, config):
     ctx.obj["parser"] = config_obj
 
 
-@cli.command()
+@cli.command(help="Edit profiles file or create one if it doesn't exists")
 @click.help_option("-h", "--help")
 @click.option("--editor", type=click.Path(), help="Editor to use, uses EDITOR environment variable", envvar="EDITOR")
 @click.pass_context
@@ -51,7 +51,7 @@ signingkey=7439487398473948""")
         click.edit(filename=ctx.obj["path"], editor=editor)
 
 
-@cli.command()
+@cli.command(help="List configured profiles")
 @click.help_option("-h", "--help")
 @click.option("-v", "--show_values", is_flag=True, type=bool, help="Show profile values")
 @click.option("--tablefmt", default="rounded_outline", show_default=True, help="How to display the parameter list. Any option from python module 'tabulate'")
@@ -99,7 +99,7 @@ def setup_git(config, profile):
         subprocess.run(command_sign_commit_unset, check=False)
 
 
-@cli.command()
+@cli.command(help="Set a git user info based on its profile")
 @click.help_option("-h", "--help")
 @click.argument("profile", callback=validate_set_profile)
 @click.pass_context
