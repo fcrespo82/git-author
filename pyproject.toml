@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "git-author"
+version = "1.0.0"
+authors = [
+    {name = "Fernando Crespo", email = "fernando82@gmail.com"},
+]
+description = "My package description"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "click", 
+    "tabulate"
+]
+
+[project.scripts]
+git-author = "git_author:cli"
+
+# ... other project metadata fields as specified in:
+#     https://packaging.python.org/en/latest/specifications/declaring-project-metadata/
