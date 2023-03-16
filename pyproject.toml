@@ -8,7 +8,7 @@ version = "1.0.0"
 authors = [
     {name = "Fernando Crespo", email = "fernando82@gmail.com"},
 ]
-description = "My package description"
+description = "git authors management"
 readme = "README.md"
 requires-python = ">=3.7"
 dependencies = [
