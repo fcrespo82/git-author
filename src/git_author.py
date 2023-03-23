@@ -53,13 +53,14 @@ signingkey=7439487398473948""")
 
 @cli.command(help="List configured profiles")
 @click.help_option("-h", "--help")
-@click.option("-v", "--show_values", is_flag=True, type=bool, help="Show profile values")
+@click.option("-v", "--verbose", is_flag=True, type=bool, help="Show profile values")
 @click.option("--tablefmt", default="rounded_outline", show_default=True, help="How to display the parameter list. Any option from python module 'tabulate'")
 @click.pass_context
-def list(ctx, tablefmt, show_values):
+def list(ctx, tablefmt, verbose):
+    click.secho("Profiles:", fg="green")
     for section in ctx.obj["parser"].sections():
-        click.secho(section, fg="green")
-        if show_values:
+        click.echo(f"- {section}")
+        if verbose:
             data = map(lambda x: [click.style(x, fg="red"),
                                   ctx.obj["parser"][section][x]], ctx.obj["parser"][section])
             click.echo(
@@ -101,13 +102,16 @@ def setup_git(config, profile):
 
 @cli.command(help="Set a git user info based on its profile")
 @click.help_option("-h", "--help")
+@click.option("-v", "--verbose", is_flag=True, type=bool)
 @click.argument("profile", callback=validate_set_profile)
 @click.pass_context
-def set(ctx, profile):
+def set(ctx, profile, verbose):
     if not is_git():
         click.secho(
             'You need to run this command inside a git repository', fg="red")
         exit()
+    if verbose:
+        click.echo(f"Setting profile {click.style(profile, fg='red')}")
     setup_git(ctx.obj["parser"], profile)
 
 
